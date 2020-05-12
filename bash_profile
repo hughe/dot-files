@@ -1,3 +1,4 @@
+# -*- mode: shell-script; -*-
 # Add /usr/local/sbin to path, Brew puts some stuff in there
 export PATH=$PATH:/usr/local/sbin
 
@@ -11,13 +12,6 @@ else
 fi
 
 export PATH=$PATH:$HOME/Development/phtest/phtest
-
-export PURITY=$HOME/Development/purity
-export OPO=$PURITY/go/src/purity.purestorage.com
-export PURGO=$PURITY/go
-
-export SR=$HOME/Development/storreduce/src/code.storreduce.com/
-
 
 source $HOME/.hugh_profile.d/configure-gvm.sh
 
