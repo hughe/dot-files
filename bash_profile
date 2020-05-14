@@ -5,6 +5,11 @@ export PATH=$PATH:/usr/local/sbin
 # Add my bin directory to path
 export PATH=$PATH:$HOME/bin
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 if [ -z "${PKG_CONFIG_PATH}" ]; then 
     export PKG_CONFIG_PATH=${PKG_CONFIG_PATH}:/usr/local/opt/openssl/lib/pkgconfig
 else
@@ -13,7 +18,7 @@ fi
 
 export PATH=$PATH:$HOME/Development/phtest/phtest
 
-source $HOME/.hugh_profile.d/configure-gvm.sh
+#source $HOME/.hugh_profile.d/configure-gvm.sh
 
 # Probably don't need this anymore
 #source $HOME/.hugh_profile.d/configure-nvm.sh
@@ -43,5 +48,9 @@ if [[ $- == *i* ]]; then
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval $(ssh-agent) > /dev/null
+fi
 
 # END OF FILE - anything after this is probably added by some script or package.
